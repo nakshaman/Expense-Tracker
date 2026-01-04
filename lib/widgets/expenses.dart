@@ -10,26 +10,28 @@ class Expenses extends StatefulWidget {
 }
 
 class _ExpensesState extends State<Expenses> {
-  final List<Expense> _regiteredExpense = [
-    Expense(
-      title: 'Flutter Course',
-      amount: 700,
-      date: DateTime.now(),
-      category: Category.work,
-    ),
-    Expense(
-      title: 'Movie Ticket',
-      amount: 200,
-      date: DateTime.now(),
-      category: Category.leisure,
-    ),
-  ];
+  final List<Expense> _regiteredExpense = [];
 
-  void _addExpense() {
+  void _openAddExpense() {
     showModalBottomSheet(
+      isScrollControlled: true,
       context: context,
-      builder: (ctx) => NewExpense(),
+      builder: (ctx) => NewExpense(
+        onAddExpense: _addExpense,
+      ),
     );
+  }
+
+  void _addExpense(Expense expense) {
+    setState(() {
+      _regiteredExpense.add(expense);
+    });
+  }
+
+  void _removeExpense(Expense expense) {
+    setState(() {
+      _regiteredExpense.remove(expense);
+    });
   }
 
   @override
@@ -44,7 +46,7 @@ class _ExpensesState extends State<Expenses> {
           Padding(
             padding: const EdgeInsets.only(right: 8),
             child: IconButton(
-              onPressed: _addExpense,
+              onPressed: _openAddExpense,
               icon: const Icon(Icons.add),
             ),
           ),
@@ -52,7 +54,12 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: Column(
         children: [
-          Expanded(child: ExpensesList(expense: _regiteredExpense)),
+          Expanded(
+            child: ExpensesList(
+              expense: _regiteredExpense,
+              onRemoveExpense: _removeExpense,
+            ),
+          ),
         ],
       ),
     );
