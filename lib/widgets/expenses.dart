@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/model/expense.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
@@ -29,13 +31,57 @@ class _ExpensesState extends State<Expenses> {
   }
 
   void _removeExpense(Expense expense) {
+    final expenseIndex = _regiteredExpense.indexOf(expense);
     setState(() {
       _regiteredExpense.remove(expense);
     });
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        duration: Duration(minutes: 1),
+        content: Container(
+          padding: EdgeInsets.all(10),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(60),
+          ),
+          child: Text(
+            'Expense Deleted',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+            ),
+          ),
+        ),
+        action: SnackBarAction(
+          label: 'Undo',
+          textColor: Colors.black,
+          onPressed: () {
+            setState(() {
+              _regiteredExpense.insert(expenseIndex, expense);
+            });
+          },
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
+    Widget mainContent = const Center(
+      child: Text('No Expense found'),
+    );
+    if (_regiteredExpense.isNotEmpty) {
+      mainContent = ExpensesList(
+        expense: _regiteredExpense,
+        onRemoveExpense: _removeExpense,
+      );
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -55,10 +101,7 @@ class _ExpensesState extends State<Expenses> {
       body: Column(
         children: [
           Expanded(
-            child: ExpensesList(
-              expense: _regiteredExpense,
-              onRemoveExpense: _removeExpense,
-            ),
+            child: mainContent,
           ),
         ],
       ),
