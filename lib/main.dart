@@ -45,6 +45,16 @@ void main() {
             color: Colors.white,
           ),
         ),
+        dialogTheme: DialogThemeData(
+          titleTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+          ),
+          contentTextStyle: TextStyle(
+            color: Colors.white,
+            fontSize: 15,
+          ),
+        ),
       ),
       theme: ThemeData().copyWith(
         appBarTheme: AppBarTheme().copyWith(
@@ -76,6 +86,10 @@ void main() {
             color: kColorScheme.onSecondaryContainer,
             fontSize: 18,
           ),
+        ),
+        dialogTheme: DialogThemeData(
+          titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
+          contentTextStyle: TextStyle(color: Colors.black, fontSize: 15),
         ),
       ),
       themeMode: ThemeMode.system,

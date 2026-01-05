@@ -41,7 +41,7 @@ class _NewExpenseState extends State<NewExpense> {
           return AlertDialog(
             title: const Text('Invalid Input'),
             content: Text(
-              'Please make sure a valid Title, amount, date and category was entered',
+              'Please make sure a valid Title, amount, date and category was entered.',
             ),
             actions: [
               TextButton(
