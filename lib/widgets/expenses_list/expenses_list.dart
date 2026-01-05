@@ -21,9 +21,6 @@ class ExpensesList extends StatelessWidget {
             borderRadius: BorderRadiusGeometry.circular(12),
             child: Container(
               color: Theme.of(context).colorScheme.error,
-              margin: EdgeInsets.symmetric(
-                // horizontal: Theme.of(context).cardTheme.margin!.horizontal,
-              ),
             ),
           ),
           onDismissed: (direction) => onRemoveExpense(expense[index]),

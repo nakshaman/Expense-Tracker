@@ -74,9 +74,7 @@ class _NewExpenseState extends State<NewExpense> {
     return InputDecoration(
       label: Text(
         labelText,
-        style: TextStyle(
-          color: Colors.black,
-        ),
+        style: Theme.of(context).textTheme.titleMedium,
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
@@ -109,6 +107,7 @@ class _NewExpenseState extends State<NewExpense> {
       child: Column(
         children: [
           TextField(
+            style: Theme.of(context).textTheme.titleMedium,
             maxLength: 50,
             controller: _titleController,
             decoration: buildInputDecoration(labelText: 'Title'),
@@ -122,6 +121,7 @@ class _NewExpenseState extends State<NewExpense> {
                 child: TextField(
                   controller: _amountController,
                   keyboardType: TextInputType.number,
+                  style: Theme.of(context).textTheme.titleMedium,
                   decoration: buildInputDecoration(
                     labelText: 'Amount',
                     preText: '₹',
@@ -137,8 +137,14 @@ class _NewExpenseState extends State<NewExpense> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     _selectedDate == null
-                        ? Text('Select Date')
-                        : Text(formatter.format(_selectedDate!)),
+                        ? Text(
+                            'Select Date',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          )
+                        : Text(
+                            formatter.format(_selectedDate!),
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
                     IconButton(
                       onPressed: _presentDatePicker,
                       icon: Icon(Icons.calendar_month),
@@ -161,7 +167,7 @@ class _NewExpenseState extends State<NewExpense> {
                         value: category,
                         child: Text(
                           category.name.toUpperCase(),
-                          style: TextStyle(color: Colors.black),
+                          style: Theme.of(context).textTheme.titleMedium,
                         ),
                       ),
                     )
@@ -174,22 +180,18 @@ class _NewExpenseState extends State<NewExpense> {
                 },
               ),
               const Spacer(),
-              TextButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 child: Text(
                   'Cancel',
-                  style: TextStyle(color: Colors.black),
                 ),
               ),
+              SizedBox(
+                width: 10,
+              ),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadiusGeometry.circular(70),
-                  ),
-                ),
                 onPressed: _sumbitExpenseData,
                 child: Text('Save Expense'),
               ),

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/model/expense.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
@@ -60,7 +58,6 @@ class _ExpensesState extends State<Expenses> {
         ),
         action: SnackBarAction(
           label: 'Undo',
-          textColor: Colors.black,
           onPressed: () {
             setState(() {
               _regiteredExpense.insert(expenseIndex, expense);
@@ -73,8 +70,11 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
-    Widget mainContent = const Center(
-      child: Text('No Expense found'),
+    Widget mainContent = Center(
+      child: Text(
+        'No Expense found',
+        style: Theme.of(context).textTheme.titleMedium,
+      ),
     );
     if (_regiteredExpense.isNotEmpty) {
       mainContent = ExpensesList(

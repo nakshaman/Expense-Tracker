@@ -4,9 +4,48 @@ import 'package:flutter/material.dart';
 var kColorScheme = ColorScheme.fromSeed(
   seedColor: const Color.fromARGB(255, 96, 59, 181),
 );
+var kDarkColorScheme = ColorScheme.fromSeed(
+  brightness: Brightness.dark,
+  seedColor: Color.fromARGB(255, 5, 99, 125),
+);
 void main() {
   runApp(
     MaterialApp(
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: kDarkColorScheme,
+        cardTheme: CardThemeData().copyWith(
+          color: kDarkColorScheme.secondaryContainer,
+          margin: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.circular(70),
+            ),
+            foregroundColor: kDarkColorScheme.primary,
+            backgroundColor: kDarkColorScheme.primaryContainer,
+            // foregroundColor: kDarkColorScheme.onPrimaryContainer,
+          ),
+        ),
+        textTheme: ThemeData().textTheme.copyWith(
+          titleMedium: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: kDarkColorScheme.onSecondaryContainer,
+            fontSize: 14,
+          ),
+          titleLarge: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: kDarkColorScheme.onSecondaryContainer,
+            fontSize: 18,
+          ),
+        ),
+        snackBarTheme: SnackBarThemeData(
+          actionTextColor: Colors.blueAccent,
+          contentTextStyle: const TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       theme: ThemeData().copyWith(
         appBarTheme: AppBarTheme().copyWith(
           backgroundColor: kColorScheme.onPrimaryContainer,
@@ -19,6 +58,10 @@ void main() {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadiusGeometry.circular(70),
+            ),
+            foregroundColor: kColorScheme.primary,
             backgroundColor: kColorScheme.primaryContainer,
           ),
         ),
@@ -28,8 +71,14 @@ void main() {
             color: kColorScheme.onSecondaryContainer,
             fontSize: 18,
           ),
+          titleMedium: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: kColorScheme.onSecondaryContainer,
+            fontSize: 18,
+          ),
         ),
       ),
+      themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
       home: Expenses(),
     ),
