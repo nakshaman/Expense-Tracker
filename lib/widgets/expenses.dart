@@ -1,3 +1,4 @@
+import 'package:expense_tracker/widgets/chart/chart.dart';
 import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/model/expense.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
@@ -39,7 +40,7 @@ class _ExpensesState extends State<Expenses> {
         behavior: SnackBarBehavior.floating,
         backgroundColor: Colors.transparent,
         elevation: 0,
-        duration: Duration(minutes: 1),
+        duration: Duration(milliseconds: 700),
         content: Container(
           padding: EdgeInsets.all(10),
           width: double.infinity,
@@ -100,6 +101,7 @@ class _ExpensesState extends State<Expenses> {
       ),
       body: Column(
         children: [
+          Chart(expenses: _regiteredExpense),
           Expanded(
             child: mainContent,
           ),

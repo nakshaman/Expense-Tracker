@@ -106,6 +106,7 @@ class _NewExpenseState extends State<NewExpense> {
       padding: EdgeInsets.fromLTRB(16, 80, 16, 16),
       child: Column(
         children: [
+          // title of expense
           TextField(
             style: Theme.of(context).textTheme.titleMedium,
             maxLength: 50,
@@ -115,6 +116,7 @@ class _NewExpenseState extends State<NewExpense> {
           SizedBox(
             height: 5,
           ),
+          // amount enter and date
           Row(
             children: [
               Expanded(
@@ -131,6 +133,7 @@ class _NewExpenseState extends State<NewExpense> {
               SizedBox(
                 width: 16,
               ),
+              // date selection
               Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -157,6 +160,7 @@ class _NewExpenseState extends State<NewExpense> {
           SizedBox(
             height: 16,
           ),
+          // dropdown cancel Button , Save Expense Button
           Row(
             children: [
               DropdownButton(

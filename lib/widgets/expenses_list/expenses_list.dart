@@ -20,7 +20,12 @@ class ExpensesList extends StatelessWidget {
           background: ClipRRect(
             borderRadius: BorderRadiusGeometry.circular(12),
             child: Container(
-              color: Theme.of(context).colorScheme.error,
+              color: Theme.of(context).colorScheme.error.withOpacity(0.75),
+              child: Expanded(
+                child: Icon(
+                  Icons.delete,
+                ),
+              ),
             ),
           ),
           onDismissed: (direction) => onRemoveExpense(expense[index]),

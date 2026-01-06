@@ -55,6 +55,10 @@ void main() {
             fontSize: 15,
           ),
         ),
+        iconTheme: IconThemeData(
+          color: Colors.white,
+          size: 40,
+        ),
       ),
       theme: ThemeData().copyWith(
         appBarTheme: AppBarTheme().copyWith(
@@ -90,6 +94,10 @@ void main() {
         dialogTheme: DialogThemeData(
           titleTextStyle: TextStyle(color: Colors.black, fontSize: 20),
           contentTextStyle: TextStyle(color: Colors.black, fontSize: 15),
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.black,
+          size: 40,
         ),
       ),
       themeMode: ThemeMode.system,
