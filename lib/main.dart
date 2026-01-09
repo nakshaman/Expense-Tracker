@@ -82,6 +82,7 @@ void main() {
         appBarTheme: AppBarTheme().copyWith(
           backgroundColor: kColorScheme.onPrimaryContainer,
           foregroundColor: kColorScheme.primaryContainer,
+          centerTitle: true,
         ),
         colorScheme: kColorScheme,
         cardTheme: CardThemeData().copyWith(
