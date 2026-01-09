@@ -59,6 +59,24 @@ void main() {
           color: Colors.white,
           size: 40,
         ),
+        inputDecorationTheme: InputDecorationTheme(
+          labelStyle: const TextStyle(color: Colors.white),
+
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: const BorderSide(color: Colors.black),
+          ),
+
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: const BorderSide(color: Colors.white),
+          ),
+
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: const BorderSide(color: Colors.white),
+          ),
+        ),
       ),
       theme: ThemeData().copyWith(
         appBarTheme: AppBarTheme().copyWith(
@@ -98,6 +116,24 @@ void main() {
         iconTheme: IconThemeData(
           color: Colors.black,
           size: 40,
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          labelStyle: const TextStyle(color: Colors.black),
+
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: const BorderSide(color: Colors.black),
+          ),
+
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: const BorderSide(color: Colors.black),
+          ),
+
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: const BorderSide(color: Colors.black),
+          ),
         ),
       ),
       themeMode: ThemeMode.system,

@@ -67,32 +67,6 @@ class _NewExpenseState extends State<NewExpense> {
     Navigator.pop(context);
   }
 
-  InputDecoration buildInputDecoration({
-    required String labelText,
-    String? preText,
-  }) {
-    return InputDecoration(
-      label: Text(
-        labelText,
-        style: Theme.of(context).textTheme.titleMedium,
-      ),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(30),
-        borderSide: BorderSide(
-          color: Colors.black,
-          strokeAlign: 1.0,
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(30),
-        borderSide: BorderSide(
-          color: Colors.black,
-          strokeAlign: 1.0,
-        ),
-      ),
-    );
-  }
-
   @override
   void dispose() {
     _titleController.dispose();
@@ -111,7 +85,9 @@ class _NewExpenseState extends State<NewExpense> {
             style: Theme.of(context).textTheme.titleMedium,
             maxLength: 50,
             controller: _titleController,
-            decoration: buildInputDecoration(labelText: 'Title'),
+            decoration: const InputDecoration(
+              labelText: 'Title',
+            ),
           ),
           SizedBox(
             height: 5,
@@ -124,9 +100,8 @@ class _NewExpenseState extends State<NewExpense> {
                   controller: _amountController,
                   keyboardType: TextInputType.number,
                   style: Theme.of(context).textTheme.titleMedium,
-                  decoration: buildInputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'Amount',
-                    preText: '₹',
                   ),
                 ),
               ),
@@ -161,28 +136,31 @@ class _NewExpenseState extends State<NewExpense> {
             height: 16,
           ),
           // dropdown cancel Button , Save Expense Button
+          DropdownButtonFormField<Category>(
+            initialValue: _selectedCategory,
+            items: Category.values
+                .map(
+                  (category) => DropdownMenuItem<Category>(
+                    value: category,
+                    child: Text(
+                      category.name.toUpperCase(),
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ),
+                )
+                .toList(),
+            onChanged: (Category? value) {
+              if (value == null) return;
+              setState(() {
+                _selectedCategory = value;
+              });
+            },
+          ),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
-              DropdownButton(
-                value: _selectedCategory,
-                items: Category.values
-                    .map(
-                      (category) => DropdownMenuItem(
-                        value: category,
-                        child: Text(
-                          category.name.toUpperCase(),
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                      ),
-                    )
-                    .toList(),
-                onChanged: (value) {
-                  if (value == null) return;
-                  setState(() {
-                    _selectedCategory = value;
-                  });
-                },
-              ),
               const Spacer(),
               ElevatedButton(
                 onPressed: () {
