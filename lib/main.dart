@@ -22,7 +22,7 @@ void main() {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(70),
             ),
-            foregroundColor: kDarkColorScheme.primary,
+            foregroundColor: Colors.white,
             backgroundColor: kDarkColorScheme.primaryContainer,
             // foregroundColor: kDarkColorScheme.onPrimaryContainer,
           ),
@@ -77,6 +77,13 @@ void main() {
             borderSide: const BorderSide(color: Colors.white),
           ),
         ),
+        dialogBackgroundColor: Colors.white,
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.white,
+          ),
+        ),
       ),
       theme: ThemeData().copyWith(
         appBarTheme: AppBarTheme().copyWith(
@@ -94,8 +101,8 @@ void main() {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusGeometry.circular(70),
             ),
-            foregroundColor: kColorScheme.primary,
-            backgroundColor: kColorScheme.primaryContainer,
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.white,
           ),
         ),
         textTheme: ThemeData().textTheme.copyWith(
@@ -134,6 +141,13 @@ void main() {
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
             borderSide: const BorderSide(color: Colors.black),
+          ),
+        ),
+        dialogBackgroundColor: Colors.black,
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            backgroundColor: Colors.black,
+            foregroundColor: Colors.white,
           ),
         ),
       ),

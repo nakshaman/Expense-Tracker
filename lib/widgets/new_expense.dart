@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:expense_tracker/model/expense.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -164,6 +163,7 @@ class _NewExpenseState extends State<NewExpense> {
                   // amount enter and date
                   Row(
                     children: [
+                      // amount field
                       Expanded(
                         child: TextField(
                           controller: _amountController,
